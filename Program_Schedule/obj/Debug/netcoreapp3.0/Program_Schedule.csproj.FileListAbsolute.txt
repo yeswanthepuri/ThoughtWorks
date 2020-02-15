@@ -1,0 +1,11 @@
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule.deps.json
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule.runtimeconfig.json
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule.runtimeconfig.dev.json
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule.dll
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/bin/Debug/netcoreapp3.0/Program_Schedule.pdb
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/obj/Debug/netcoreapp3.0/Program_Schedule.csprojAssemblyReference.cache
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/obj/Debug/netcoreapp3.0/Program_Schedule.AssemblyInfoInputs.cache
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/obj/Debug/netcoreapp3.0/Program_Schedule.AssemblyInfo.cs
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/obj/Debug/netcoreapp3.0/Program_Schedule.dll
+/Users/yeswanthepuri/ThoughtWork_SampleProject/Program_Schedule/obj/Debug/netcoreapp3.0/Program_Schedule.pdb
