@@ -1,7 +1,6 @@
-using System;
 using Xunit;
 using Program_Schedule.Handlers;
-using Program_Schedule.Model;
+
 
 
 namespace ProgramSchedule_Test

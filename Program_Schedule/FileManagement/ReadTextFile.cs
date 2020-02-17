@@ -6,24 +6,32 @@ using System.IO;
 
 namespace Program_Schedule.FileManagement
 {
-    public class ReadTextFile
+    public class ReadTextFile : IReadFile
     {
-        private string Path { get; set; }
+        public string Path { get; set; }
         public ReadTextFile(string path)
         {
             Path = path;
         }
 
-        public List<string> ReadTextFileToList()
+        public List<string> ReadFileToList()
         {
             var fileDataToList = new List<string>();
-            string ln; 
-            using (StreamReader file = new StreamReader(Path))
+            string ln;
+            try
             {
-                while (((ln= file.ReadLine()) != null))
+                using (StreamReader file = new StreamReader(Path))
                 {
-                    fileDataToList.Add(ln);
+                    while (((ln = file.ReadLine()) != null))
+                    {
+                        fileDataToList.Add(ln);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.Excep = ex;
+                throw new Exception();
             }
             return fileDataToList;
         }

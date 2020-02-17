@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-
+using Program_Schedule.HelperClass;
 using Program_Schedule.Model;
 
 namespace Program_Schedule.Handlers
@@ -32,10 +32,10 @@ namespace Program_Schedule.Handlers
             List<Talk> Talks = new List<Talk>();
             foreach (var item in conferenceDataInput)
             {
-                Match timeinMin = Regex.Match(item, "(\\s\\d{1,2}min)$");
+                Match timeinMin = Regex.Match(item, Const.PATTERN);
                 if (timeinMin.Success)
                 {
-                    var duration = Convert.ToInt16(timeinMin.Value.Replace("min", ""));
+                    var duration = Convert.ToInt16(timeinMin.Value.Replace(Const.MIN, ""));
                     Talks.Add(new Talk()
                     {
                         Title = item.Trim(),
@@ -43,7 +43,7 @@ namespace Program_Schedule.Handlers
                     });
                     TotalEventTimeInMin =+ duration;
                 }
-                else if (item.ToLower().Contains("lightning"))
+                else if (item.ToLower().Contains(Const.LIGHTING))
                 {
                     Talks.Add(new Talk()
                     {

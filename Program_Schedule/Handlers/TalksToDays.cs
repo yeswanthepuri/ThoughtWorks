@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Program_Schedule.HelperClass;
 using Program_Schedule.Model;
 
 namespace Program_Schedule.Handlers
@@ -24,32 +25,39 @@ namespace Program_Schedule.Handlers
             List<Slot> slots = Slot.GetSlots((int)NumberOfTracksNeeded);
             var talksOrderbyPeriod = talks.OrderByDescending(x => x.Duration).ToList();
             var assigned_Slots = talks;
-
-            for (int slot = 0; slot < slots.Count(); slot++)
+            try
             {
-                for (int talk = 0; talk < talksOrderbyPeriod.Count(); talk++)
+                for (int slot = 0; slot < slots.Count(); slot++)
                 {
-                    if (!talksOrderbyPeriod[talk].IsAssigned && talksOrderbyPeriod[talk].Duration <= slots[slot].PeriodInMin)
+                    for (int talk = 0; talk < talksOrderbyPeriod.Count(); talk++)
                     {
-                        if (slots[slot].MorningOrEvening == SlotType.Morning)
+                        if (!talksOrderbyPeriod[talk].IsAssigned && talksOrderbyPeriod[talk].Duration <= slots[slot].PeriodInMin)
                         {
-                           var time = Slot.GetTime((int)Period.Morning-slots[slot].PeriodInMin, 9);
-                           talksOrderbyPeriod[talk].TimeDisplay=time+("AM") ;
-                        }
-                        else
-                        {
-                          var time =   Slot.GetTime((int)Period.Evening-slots[slot].PeriodInMin, 13);
-                          talksOrderbyPeriod[talk].TimeDisplay=time+("PM");
-                        }
-                        talksOrderbyPeriod[talk].SessionAssigned = slots[slot].ID;
-                        talksOrderbyPeriod[talk].Day = slots[slot].DayNumber;
-                        talksOrderbyPeriod[talk].IsAssigned = true;
-                        talksOrderbyPeriod[talk].AssignedDuring = slots[slot].MorningOrEvening;
-                        slots[slot].PeriodInMin -= talksOrderbyPeriod[talk].Duration;
+                            if (slots[slot].MorningOrEvening == SlotType.Morning)
+                            {
+                                var time = Slot.GetTime((int)Period.Morning - slots[slot].PeriodInMin, 9);
+                                talksOrderbyPeriod[talk].TimeDisplay = time + ("AM");
+                            }
+                            else
+                            {
+                                var time = Slot.GetTime((int)Period.Evening - slots[slot].PeriodInMin, 13);
+                                talksOrderbyPeriod[talk].TimeDisplay = time + ("PM");
+                            }
+                            talksOrderbyPeriod[talk].SessionAssigned = slots[slot].ID;
+                            talksOrderbyPeriod[talk].Day = slots[slot].DayNumber;
+                            talksOrderbyPeriod[talk].IsAssigned = true;
+                            talksOrderbyPeriod[talk].AssignedDuring = slots[slot].MorningOrEvening;
+                            slots[slot].PeriodInMin -= talksOrderbyPeriod[talk].Duration;
 
-                        
+
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.Excep = ex;
+                 throw ExceptionHandling.Excep;
             }
             return talksOrderbyPeriod;
 

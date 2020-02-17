@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Program_Schedule.HelperClass;
 
 namespace Program_Schedule.Model
 {
@@ -48,17 +49,5 @@ namespace Program_Schedule.Model
             }
             return result.OrderBy(x => x.PeriodInMin).ToList();
         }
-    }
-    public enum SlotType
-    {
-        Morning,
-        Evening
-    }
-
-    public enum Period
-    {
-
-        Morning = 180,
-        Evening = 240
     }
 }
