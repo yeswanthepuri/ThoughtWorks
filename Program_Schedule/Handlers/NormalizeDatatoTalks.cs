@@ -9,51 +9,28 @@ namespace Program_Schedule.Handlers
     public class NormalizeDatatoTalks
     {
         private List<string> conferenceDataInput { get; set; }
-        private List<Talk> Talks { get; set; }
-        private int totalEventTimeInMin=0;
-        public int TotalEventTimeInMin
-        {
-            get
-            {
-                return totalEventTimeInMin;
-            }
-            set
-            {
-                totalEventTimeInMin += value;
-            }
-        }
+        private List<ITalk> talks { get; set; } 
         public NormalizeDatatoTalks(List<string> ConferenceDataInput)
         {
             this.conferenceDataInput = ConferenceDataInput;
+            talks=new List<ITalk>();
         }
-
-        public List<Talk> GetTalks()
+        public List<ITalk> GetTalks()
         {
-            List<Talk> Talks = new List<Talk>();
             foreach (var item in conferenceDataInput)
             {
                 Match timeinMin = Regex.Match(item, Const.PATTERN);
                 if (timeinMin.Success)
                 {
                     var duration = Convert.ToInt16(timeinMin.Value.Replace(Const.MIN, ""));
-                    Talks.Add(new Talk()
-                    {
-                        Title = item.Trim(),
-                        Duration = duration
-                    });
-                    TotalEventTimeInMin =+ duration;
+                    talks.Add(new Talk(item.Trim(),duration));
                 }
                 else if (item.ToLower().Contains(Const.LIGHTING))
                 {
-                    Talks.Add(new Talk()
-                    {
-                        Title = item.Trim(),
-                        Duration = 5
-                    });
-                    TotalEventTimeInMin =+ 5;
+                     talks.Add(new LighteningTalk(item.Trim(),5));
                 }
             }
-            return Talks;
+            return talks;
         }
     }
 }

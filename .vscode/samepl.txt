@@ -102,3 +102,8 @@ for (int i = 0; i <= NumberOfTracksNeeded-1; i++)
                     }
                 }
             }
+
+
+            -> solid principles 
+            ->clean code(refactoring methods/reducing cyclomatic complexity) 
+            ->taking care of networking event timings and lightning talks logic

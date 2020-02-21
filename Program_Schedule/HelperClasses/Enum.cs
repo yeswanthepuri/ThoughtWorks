@@ -2,8 +2,9 @@ namespace Program_Schedule.HelperClass
 {
     public enum SlotType
     {
-        Morning,
-        Evening
+        Morning = 0,
+        Evening = 1,
+        
     }
 
     public enum Period

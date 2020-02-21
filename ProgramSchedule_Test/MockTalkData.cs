@@ -32,8 +32,8 @@ namespace ProgramSchedule_Test
         public static List<Talk> GetMockTalkData()
         {
             var returnTalks = new List<Talk>();
-            returnTalks.Add(new Talk(){Title ="Writing Fast tests Against Enterprise Rails",Duration=60});
-            returnTalks.Add(new Talk(){Title ="OverDoing in Python",Duration=45});
+            //returnTalks.Add(new Talk(){Title ="Writing Fast tests Against Enterprise Rails",Duration=60});
+            //returnTalks.Add(new Talk(){Title ="OverDoing in Python",Duration=45});
             return returnTalks;
         }
     }
