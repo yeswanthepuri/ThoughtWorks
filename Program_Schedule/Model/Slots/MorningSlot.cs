@@ -4,8 +4,13 @@ namespace Program_Schedule.Model
 {
     public class MorningSlot : Slot
     {
-        public override int SlotDuration { get; set; } = (int)Period.Morning;
-        public override SlotType TypeOfSlot { get;  set; } = SlotType.Morning;
+        public MorningSlot()
+        {
+            SlotDuration  = (int)Period.Morning;
+            TypeOfSlot  = SlotType.Morning;
+        }
+        public override int SlotDuration { get; set; }
+        public override SlotType TypeOfSlot { get;  set; }
 
         public override int AllotDurationforTalk(int talkDuration)
         {
