@@ -14,19 +14,14 @@ namespace Program_Schedule.Model
             slots.Add(slot);
         }
 
-        public Slot GetSlot(SlotType slotType)
+        public Slot GetSlot()
         {
-            if (slotType == SlotType.Morning)
-            {
-                return slots[0];
-            }
-            else
-                return slots[1];
+            return slots[slots.Count - 1];
         }
 
         public bool IsTrackFull()
         {
-            return GetSlotCount() >= 2;
+            return GetSlotCount() >= 2 || GetSlotCount() == 0;
         }
 
         public int GetSlotCount()
@@ -38,5 +33,6 @@ namespace Program_Schedule.Model
         {
             slots = new List<Slot>();
         }
+
     }
 }
