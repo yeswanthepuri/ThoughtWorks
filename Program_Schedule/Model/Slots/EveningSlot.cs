@@ -4,8 +4,13 @@ namespace Program_Schedule.Model
 {
     public class EveningSlot : Slot
     {
-        public override int SlotDuration { get; set; } = (int)Period.Evening;
-        public override SlotType TypeOfSlot { get; set; } = SlotType.Evening;
+        public EveningSlot()
+        {
+            SlotDuration = (int)Period.Evening;
+            TypeOfSlot = SlotType.Evening;
+        }
+        public override int SlotDuration { get; set; }
+        public override SlotType TypeOfSlot { get; set; }
 
         public override int AllotDurationforTalk(int talkDuration)
         {
@@ -19,7 +24,7 @@ namespace Program_Schedule.Model
 
         public override string AllotedSlot()
         {
-            return string.Join(" ",GetTime((int)Period.Evening - SlotDuration, 13), "PM");
+            return string.Join(" ", GetTime((int)Period.Evening - SlotDuration, 13), "PM");
         }
     }
 }
